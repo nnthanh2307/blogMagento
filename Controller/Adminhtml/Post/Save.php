@@ -4,6 +4,7 @@ namespace NgocThanh\Blog\Controller\Adminhtml\Post;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Request\DataPersistorInterface;
+use NgocThanh\Blog\Helper\Cache\CleanCache;
 use NgocThanh\Blog\Model\PostFactory;
 use NgocThanh\Blog\Model\RelatedProductFactory;
 use NgocThanh\Blog\Model\TagFactory;
@@ -22,6 +23,7 @@ class Save extends \Magento\Backend\App\Action
     protected $_tagFactory;
     protected $_relatedProduct;
     protected $_relatedCollection;
+    protected $_cleanCache;
 
     /**
      * Save constructor.
@@ -36,8 +38,10 @@ class Save extends \Magento\Backend\App\Action
         DataPersistorInterface $dataPersistor,
         PostFactory $postFactory,
         TagFactory $tagFactory,
-        RelatedProductFactory $relatedProductFactory
+        RelatedProductFactory $relatedProductFactory,
+        CleanCache $cleanCache
     ) {
+        $this->_cleanCache = $cleanCache;
         $this->_relatedProduct = $relatedProductFactory;
         $this->_tagFactory = $tagFactory;
         $this->_postFactory = $postFactory;
@@ -60,9 +64,7 @@ class Save extends \Magento\Backend\App\Action
         if ($postSize > 0 && !isset($data["post"]["post_id"])) {
             $this->messageManager->addErrorMessage(__('Do not create 2 Blog same same.'));
             return $this->_redirect($this->getUrl("*/*/"));
-        }
-        else
-        {
+        } else {
             if (isset($data)) {
                 $postModel->addData($data["post"]);
                 $postId = $postModel->save()->getId();
@@ -89,6 +91,7 @@ class Save extends \Magento\Backend\App\Action
                         $this->_relatedProduct->create()->addData($item)->save();
                     }
                 }
+                $this->_cleanCache->cacheFunction();
                 $this->messageManager->addSuccessMessage(__('Record have been Saved.'));
                 return $this->_redirect($this->getUrl("*/*/"));
             }
