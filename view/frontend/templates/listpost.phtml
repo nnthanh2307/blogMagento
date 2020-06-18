@@ -1,0 +1,54 @@
+<!--================Home Banner Area =================-->
+
+<!--================End Home Banner Area =================-->
+
+<!--================Blog Categorie Area =================-->
+
+<!--================Blog Categorie Area =================-->
+
+<!--================Blog Area =================-->
+
+
+<section class="blog_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="blog_left_sidebar">
+                    <?php
+                        if (count($block->getPost()) > 0) {
+                            foreach ($block->getPost() as $item) {
+                           ?>
+                            <article class="row blog_item">
+                                <div class="col-md-3">
+                                    <div class="blog_info text-right">
+<!--                                        --><?php //echo $block->getTag($item["tag_name"]) ?>
+                                        <ul class="blog_meta list">
+                                            <li><i class="lnr lnr-user"></i>Ngoc Thanh</li>
+                                            <li><?php echo $item["publish_date_from"]?><i class="lnr lnr-calendar-full"></i></li>
+                                            <li><?php echo $item["publish_date_to"] ?><i class="lnr lnr-calendar-full"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="blog_post">
+                                        <a href="<?php echo $block->postURL($item["post_id"]) ?>"><img src="<?= $item["thumbnail"] ?>" alt=""></a>
+                                        <div class="blog_details">
+                                            <a href="<?php echo $block->postURL($item["post_id"]) ?>"><h2><?php echo $item["post_title"]?></h2></a>
+                                            <p><?= $item["short_description"] ?></p>
+                                            <a href="<?php echo $block->postURL($item["post_id"]) ?>" class="white_bg_btn">View More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                    <?php
+                            }
+                        }
+                    ?>
+                    <?php echo $block->getChildHtml("pagination")?>
+                </div>
+            </div>
+            <?php echo $block->getChildHtml("rightbar")?>
+        </div>
+    </div>
+</section>
+

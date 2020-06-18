@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="blog" translate="label" sortOrder="50">
+            <label>Blog</label>
+        </tab>
+        <section id="blog" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Blog Configuration</label>
+            <tab>blog</tab>
+            <resource>NgocThanh_Blog::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Module Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="name_in_frontend" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Display name in frontend </label>
+                    <comment>This text will display on the frontend.</comment>
+                </field>
+            </group>
+            <group id="seo" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Search Engine Optimization</label>
+                <field id="base_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Base URL</label>
+                    <comment>Base Ul of Module</comment>
+                </field> <field id="suffix_post" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>URL Suffix for Posts</label>
+                    <comment>URL Suffix for Posts</comment>
+                </field> <field id="suffix_cagtegory" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>URL Suffix for Categories</label>
+                    <comment>URL Suffix for Categories</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

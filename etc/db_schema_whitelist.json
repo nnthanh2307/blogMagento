@@ -1,0 +1,76 @@
+{
+    "post": {
+        "column": {
+            "post_id": true,
+            "post_title": true,
+            "short_description": true,
+            "description": true,
+            "content": true,
+            "thumbnail": true,
+            "status": true,
+            "url_key": true,
+            "publish_date_from": true,
+            "publish_date_to": true
+        },
+        "index": {
+            "POST_POST_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "tag": {
+        "column": {
+            "tag_id": true,
+            "tag_name": true,
+            "meta_keyword": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "category": {
+        "column": {
+            "category_id": true,
+            "parent_id": true,
+            "category_name": true,
+            "url_key": true,
+            "status": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "CATEGORY_PARENT_ID_CATEGORY_CATEGORY_ID": true
+        }
+    },
+    "post_tag": {
+        "column": {
+            "post_id": true,
+            "tag_id": true
+        },
+        "constraint": {
+            "POST_TAG_POST_ID_POST_POST_ID": true,
+            "POST_TAG_TAG_ID_TAG_TAG_ID": true
+        }
+    },
+    "post_category": {
+        "column": {
+            "post_id": true,
+            "category_id": true
+        },
+        "constraint": {
+            "POST_CATEGORY_POST_ID_POST_POST_ID": true,
+            "POST_CATEGORY_CATEGORY_ID_CATEGORY_CATEGORY_ID": true
+        }
+    },
+    "related_product": {
+        "column": {
+            "related_id": true,
+            "post_id": true,
+            "products": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "RELATED_PRODUCT_POST_ID_POST_POST_ID": true
+        }
+    }
+}

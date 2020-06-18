@@ -1,0 +1,14 @@
+<nav class="blog-pagination justify-content-center d-flex">
+    <ul class="pagination">
+        <?php
+        for ($i = 1; $i <= $block->getPagination(); $i++) {
+            $active ="";
+            if ($block->getRequest()->getParam("page") == $i)
+                $active = " active";
+            ?>
+            <li class="page-item <?php echo $active ?>"><a class="page-link " href="<?= $block->url($i) ?>"><?= $i ?></a></li>
+            <?php
+        }
+        ?>
+    </ul>
+</nav>

@@ -1,0 +1,217 @@
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">blog_post_listing.blog_post_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="blog/post/edit"/>
+                <class>primary</class>
+                <label translate="true">Add New Blog</label>
+            </button>
+        </buttons>
+        <spinner>sitemap</spinner>
+        <deps>
+            <dep>blog_post_listing.blog_post_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="blog_post_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">post_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="NgocThanh\Blog\Ui\Post\Source\DataProvider" name="blog_post_listing_data_source">
+            <settings>
+                <requestFieldName>post_id</requestFieldName>
+                <primaryFieldName>post_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <columnsControls name="columns_controls">
+        </columnsControls>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters">
+            <settings>
+                <chipsConfig>
+                    <param name="component" xsi:type="string">Magento_Ui/js/grid/filters/chips</param>
+                    <param name="componentType" xsi:type="string">filtersChips</param>
+                    <param name="template" xsi:type="string">ui/grid/filters/chips</param>
+                </chipsConfig>
+            </settings>
+        </filters>
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <action name="postdelete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected items?</message>
+                        <title translate="true">Delete Post</title>
+                    </confirm>
+                    <url path="blog/post/massdelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+            <action name="poststatus">
+                <settings>
+                    <type>status</type>
+                    <label translate="true">Change Status</label>
+                    <actions>
+                        <action name="0">
+                            <type>enable</type>
+                            <label translate="true">Enable</label>
+                            <url path="blog/post/poststatus">
+                                <param name="status">1</param>
+                            </url>
+                        </action>
+                        <action name="1">
+                            <type>disable</type>
+                            <label translate="true">Disable</label>
+                            <url path="blog/post/poststatus">
+                                <param name="status">0</param>
+                            </url>
+                        </action>
+                    </actions>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging">
+            <settings>
+                <options>
+                    <option name="5" xsi:type="array">
+                        <item name="value" xsi:type="number">5</item>
+                        <item name="label" xsi:type="string">5</item>
+                    </option>
+                    <option name="10" xsi:type="array">
+                        <item name="value" xsi:type="number">10</item>
+                        <item name="label" xsi:type="string">10</item>
+                    </option>
+                    <option name="20" xsi:type="array">
+                        <item name="value" xsi:type="number">20</item>
+                        <item name="label" xsi:type="string">20</item>
+                    </option>
+                </options>
+                <pageSize>5</pageSize>
+            </settings>
+        </paging>
+
+        <exportButton class="Magento\Ui\Component\ExportButton">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="options" xsi:type="array">
+                        <item name="csv" xsi:type="array">
+                            <item name="value" xsi:type="string">csv</item>
+                            <item name="label" xsi:type="string" translate="true">CSV</item>
+                            <item name="url" xsi:type="string">blog/export/gridtocsv</item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </exportButton>
+    </listingToolbar>
+
+    <columns name="sitemap">
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">55</item>
+                    <item name="indexField" xsi:type="string">post_id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="post_id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+<!--        <column name="thumbnail" class="Magento\Catalog\Ui\Component\Listing\Columns\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="20">-->
+        <column name="thumbnail" class="NgocThanh\Blog\Ui\Component\Listing\Columns\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="20">
+            <settings>
+                <altField>name</altField>
+                <hasPreview>1</hasPreview>
+                <addField>true</addField>
+                <label translate="true">Thumbnail</label>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+
+        <column name="post_title">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Title</label>
+            </settings>
+        </column>
+            <column name="category" class="NgocThanh\Blog\Ui\Component\Listing\Columns\Category">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="sortable" xsi:type="boolean">false</item>
+                        <item name="label" xsi:type="string" translate="true">Category</item>
+                    </item>
+                </argument>
+                <settings>
+                    <filter>text</filter>
+                </settings>
+            </column>
+        <column name="tag" class="NgocThanh\Blog\Ui\Component\Listing\Columns\Tag">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="label" xsi:type="string" translate="true">Tag</item>
+                </item>
+            </argument>
+            <settings>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <column name="url_key">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">URL Key</label>
+            </settings>
+        </column>
+
+        <column name="status">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">NgocThanh\Blog\Ui\Component\Listing\Columns\Status</item>
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="editor" xsi:type="string">select</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="publish_date_from">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Publish Date From</label>
+            </settings>
+        </column>
+        <column name="publish_date_to">
+            <settings>
+                <filter>dateRange</filter>
+                <label translate="true">Publish Date to</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="NgocThanh\Blog\Ui\Component\Listing\Columns\PostAction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">post_id</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+</listing>

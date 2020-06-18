@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="post" resource="default" comment="Create table using declarative schema">
+        <column xsi:type="int" name="post_id" padding="10" identity="true" unsigned="true" nullable="false" comment="Post ID"/>
+        <column xsi:type="varchar" name="post_title" length="255" nullable="false"  />
+        <column xsi:type="text" name="short_description" comment="Short Description"/>
+        <column xsi:type="text" name="description" disabled="true" comment="Description"/>
+        <column xsi:type="text" name="content" comment="Content"/>
+        <column xsi:type="text" name="thumbnail" comment="Thumbnail"/>
+        <column xsi:type="int" name="status" comment="Status" />
+        <column xsi:type="text" name="url_key" comment="URL Key"/>
+        <column xsi:type="timestamp" name="publish_date_from" comment="Publish Date From"/>
+        <column xsi:type="timestamp" name="publish_date_to" comment="Publish Date To"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="post_id"/>
+        </constraint>
+        <index referenceId="POST_INDEX" indexType="btree">
+            <column name="post_id"/>
+        </index>
+    </table>
+
+    <table name="tag">
+        <column xsi:type="int" name="tag_id" padding="10" identity="true" nullable="false" unsigned="true" comment="Tag ID" />
+        <column xsi:type="varchar" name="tag_name" length="100" nullable="false" comment="Tag Name"/>
+        <column xsi:type="varchar" name="url_key" length="100" nullable="true" comment="URL Key" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="tag_id"/>
+        </constraint>
+    </table>
+
+    <table name="category" comment="Table Category">
+        <column xsi:type="int" name="category_id" padding="10" identity="true" nullable="false" unsigned="true" comment="Category ID" />
+        <column xsi:type="int" name="parent_id" padding="10" nullable="true" unsigned="true" comment="Parent ID"/>
+        <column xsi:type="varchar" name="category_name" length="255" nullable="false" comment="Category Name"/>
+        <column xsi:type="text" name="url_key" comment="URL Key Column" />
+        <column xsi:type="int" name="status" comment="Status Column" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="category_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" disabled="true" referenceId="FK_Category_Category" table="category" column="parent_id" referenceTable="category" referenceColumn="category_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="post_tag">
+        <column xsi:type="int" name="post_id" padding="10" unsigned="true" comment="Post ID"/>
+        <column xsi:type="int" name="tag_id" padding="10" unsigned="true" comment="Tag ID"/>
+        <constraint xsi:type="foreign" referenceId="FK_PostTag_Post" table="post_tag" column="post_id" referenceTable="post" referenceColumn="post_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="FK_PostTag_Tag" table="post_tag" column="tag_id" referenceTable="tag" referenceColumn="tag_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="post_category">
+        <column xsi:type="int" name="post_id" padding="10" unsigned="true" comment="Post ID"/>
+        <column xsi:type="int" name="category_id" padding="10" unsigned="true" comment="Tag ID"/>
+        <constraint xsi:type="foreign" referenceId="FK_PostCategory_Post" table="post_category" column="post_id" referenceTable="post" referenceColumn="post_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="FK_PostCategory_Category" table="post_category" column="category_id" referenceTable="category" referenceColumn="category_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="related_product">
+        <column xsi:type="int" name="related_id" padding="10" identity="true" unsigned="true" nullable="false" comment="related_id"/>
+        <column xsi:type="int" name="post_id" padding="10" nullable="false" unsigned="true" comment="Post ID" />
+        <column xsi:type="int" name="id" unsigned="true" comment="Product ID" />
+        <column xsi:type="varchar" length="255" name="name" comment="Product Name" />
+        <column xsi:type="text" name="status" comment="Product Status" />
+        <column xsi:type="text" name="thumbnail" comment="Product Thumbnail" />
+        <column xsi:type="text" name="position" comment="Product position" />
+        <column xsi:type="text" name="record_id" comment="Product record_id" />
+        <column xsi:type="text" name="price" comment="Product Price" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="related_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FK_RelatedProduct_Post" table="related_product" column="post_id" referenceTable="post" referenceColumn="post_id" onDelete="CASCADE"/>
+    </table>
+</schema>

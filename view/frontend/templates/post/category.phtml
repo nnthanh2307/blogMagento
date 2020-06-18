@@ -1,0 +1,21 @@
+<aside class="single_sidebar_widget post_category_widget">
+    <h4 class="widget_title">Post Catgories</h4>
+    <ul class="list cat-list">
+    <?php
+        $category = $block->listCategory();
+        if (!empty($category)) {
+            foreach ($category as $item) {
+                ?>
+                <li>
+                    <a href="<?php echo $block->categoryUrl($item["url_key"]) ?>" class="d-flex justify-content-between">
+                        <p><?php echo $item["category_name"] ?></p>
+                        <p><?php echo $item["category_id"] ?></p>
+                    </a>
+                </li>
+    <?php
+            }
+        }
+    ?>
+    </ul>
+    <div class="br"></div>
+</aside>

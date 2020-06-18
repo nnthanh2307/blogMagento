@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="NgocThanh_Blog::blog" title="Module Blog"  module="NgocThanh_Blog" sortOrder="1"
+             resource="NgocThanh_Blog::blog" parent="Magento_Backend::content"/>
+        <add id="NgocThanh_Blog1::post" title="List Blog" parent="NgocThanh_Blog::blog" module="NgocThanh_Blog"
+             sortOrder="10" resource="NgocThanh_Blog::post" action="blog/post/index"/>
+        <add id="NgocThanh_Blog1::category" title="Category" parent="NgocThanh_Blog::blog" module="NgocThanh_Blog"
+             sortOrder="20" resource="NgocThanh_Blog::category" action="blog/category/index"/>
+        <add id="NgocThanh_Blog1::config" title="Blog Config" parent="NgocThanh_Blog::blog" module="NgocThanh_Blog"
+             sortOrder="30" resource="NgocThanh_Blog::config" action="adminhtml/system_config/edit/section/blog"/>
+    </menu>
+</config>

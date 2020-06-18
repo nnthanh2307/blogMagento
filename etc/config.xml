@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <blog>
+            <general>
+                <enable>0</enable>
+                <display_text>Default Configuration</display_text>
+                <name_in_frontend>Module Blog</name_in_frontend>
+            </general>
+        </blog>
+        <blog>
+            <seo>
+                <base_url>blog</base_url>
+                <suffix_post>.html</suffix_post>
+                <suffix_cagtegory>.html</suffix_cagtegory>
+            </seo>
+        </blog>
+    </default>
+</config>

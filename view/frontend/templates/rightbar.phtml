@@ -1,0 +1,38 @@
+<div class="col-lg-4">
+    <div class="blog_right_sidebar">
+        <aside class="single_sidebar_widget search_widget">
+            <div class="input-group">
+                <form style="width: 100%" action="<?php echo $block->getUrl("*/*/listpost") ?>">
+                    <div class="container-fluid">
+                        <div class="row">
+<!--                            <div style="padding-left: 0; padding-right: 0" class="col-sm-8">-->
+                                <input name="search" type="text" class="form-control" placeholder="Search Posts">
+<!--                            </div>-->
+<!--                            <div style="padding-right: 0; background-color: #c5322d" class="col-sm-4">-->
+                            <span class="input-group-btn">
+                                <button class="btn" type="submit"><i class="lnr lnr-magnifier"></i></button>
+                            </span>
+<!--                            </div>-->
+                    </div>
+                </form>
+            </div>
+            <div class="br"></div>
+        </aside>
+        <aside class="single_sidebar_widget author_widget">
+            <img class="author_img rounded-circle" src="http://magento2local.com/media/ngocthanh/tmp/image/lotus.jpg" alt="">
+            <h4>Nguyen Ngoc Thanh</h4>
+            <p>UET - VNU</p>
+            <p>Boot camps have its supporters andit sdetractors. Some people do not understand why you should have to spend money on boot camp when you can get. Boot camps have itssuppor ters andits detractors.</p>
+            <div class="br"></div>
+        </aside>
+        <aside class="single_sidebar_widget ads_widget">
+            <a href="#"><img class="img-fluid" src="img/blog/add.jpg" alt=""></a>
+            <div class="br"></div>
+        </aside>
+<!--            CATEGORY-->
+            <?php echo $block->getChildHtml("category"); ?>
+
+<!--            --><?php //echo $block->getChildHtml("tag"); ?>
+
+    </div>
+</div>
