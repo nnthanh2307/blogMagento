@@ -41,7 +41,7 @@ class Save extends \Magento\Backend\App\Action
         $data = $this->getRequest()->getPostValue();
         if ($data) {
             unset($data["form_key"]);
-            if ($data["status"] == null || $data["status"]) {
+            if ($data["status"] == null) {
                 $data["status"] = 0;
             }
             try {
