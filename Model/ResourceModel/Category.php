@@ -11,4 +11,5 @@ class Category extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     {
         $this->_init("category", "category_id");
     }
+
 }

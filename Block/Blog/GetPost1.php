@@ -82,4 +82,22 @@ class GetPost1 extends Template
     {
         return $this->getUrl("*/view/post/id/$id");
     }
+
+    public function getTag($id)
+    {
+        $tag =  $this->postCollectionFactory->getListPost()->getResource()->returnTag($id);
+        $array = [];
+        foreach ($tag as $item)
+            $array[] = $item["tag_name"];
+        return implode(", ",$array);
+    }
+
+    public function getCategory($id)
+    {
+        $tag =  $this->postCollectionFactory->getListPost()->getResource()->returnCategory($id);
+        $array = [];
+        foreach ($tag as $item)
+            $array[] = $item["category_name"];
+        return implode(", ",$array);
+    }
 }

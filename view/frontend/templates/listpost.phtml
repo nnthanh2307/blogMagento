@@ -10,10 +10,14 @@
                             <article class="row blog_item">
                                 <div class="col-md-3">
                                     <div class="blog_info text-right">
-<!--                                        --><?php //echo $block->getTag($item["tag_name"]) ?>
+                                        <h4 style="color: #c5322d">Tag: </h4>
+                                        <p><?php echo $block->getTag($item["post_id"]) ?>
+                                        <h4 style="color: #c5322d">Category: </h4>
+                                        <p><?php echo $block->getCategory($item["post_id"]) ?>
                                         <ul class="blog_meta list">
-                                            <li><i class="lnr lnr-user"></i>Ngoc Thanh</li>
+                                            <h4 style="color: #c5322d">Publish Date From: </h4>
                                             <li><?php echo $item["publish_date_from"]?><i class="lnr lnr-calendar-full"></i></li>
+                                            <h4 style="color: #c5322d">Publish Date To: </h4>
                                             <li><?php echo $item["publish_date_to"] ?><i class="lnr lnr-calendar-full"></i></li>
                                         </ul>
                                     </div>
@@ -34,7 +38,6 @@
                             }
                         }
                     ?>
-<!--                    <div>--><?php //echo $block->getPagerHtml(); ?><!--</div>-->
                     <?php if ($block->getPagerHtml()): ?>
                         <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
                     <?php endif ?>
