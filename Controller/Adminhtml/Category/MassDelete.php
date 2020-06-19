@@ -51,6 +51,9 @@ class MassDelete extends Action
         return $this->_redirect($this->getUrl("*/*/"));
     }
 
+    /**
+     * @return bool
+     */
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('NgocThanh_Blog::delete');

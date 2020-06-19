@@ -6,12 +6,32 @@ use Magento\Backend\Block\Template;
 use NgocThanh\Blog\Helper\Config\GetConfig;
 use NgocThanh\Blog\Helper\Post\Post;
 
+/**
+ * Class GetPost1
+ * @package NgocThanh\Blog\Block\Blog
+ */
 class GetPost1 extends Template
 {
+    /**
+     * @var Post
+     */
     protected $postCollectionFactory;
+    /**
+     * @var
+     */
     protected $postFactory;
+    /**
+     * @var GetConfig
+     */
     protected $_config;
 
+    /**
+     * GetPost1 constructor.
+     * @param Template\Context $context
+     * @param \Magento\Framework\App\Request\Http $request
+     * @param Post $post
+     * @param GetConfig $config
+     */
     public function __construct(
         Template\Context $context,
         \Magento\Framework\App\Request\Http $request,
@@ -23,6 +43,10 @@ class GetPost1 extends Template
         parent::__construct($context);
     }
 
+    /**
+     * @return $this|GetPost1
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     protected function _prepareLayout()
     {
         parent::_prepareLayout();
@@ -38,11 +62,17 @@ class GetPost1 extends Template
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function getPagerHtml()
     {
         return $this->getChildHtml('pager');
     }
 
+    /**
+     * @return array
+     */
     public function returnNumber()
     {
         $result = [];
@@ -54,6 +84,9 @@ class GetPost1 extends Template
         return $result;
     }
 
+    /**
+     * @return \NgocThanh\Blog\Model\ResourceModel\Reponsitory\Collection
+     */
     public function getPost()
     {
         $now = new \DateTime();
@@ -78,11 +111,19 @@ class GetPost1 extends Template
         return $collection;
     }
 
+    /**
+     * @param $id
+     * @return string
+     */
     public function postURL($id)
     {
         return $this->getUrl("*/view/post/id/$id");
     }
 
+    /**
+     * @param $id
+     * @return string
+     */
     public function getTag($id)
     {
         $tag =  $this->postCollectionFactory->getListPost()->getResource()->returnTag($id);
@@ -92,6 +133,10 @@ class GetPost1 extends Template
         return implode(", ",$array);
     }
 
+    /**
+     * @param $id
+     * @return string
+     */
     public function getCategory($id)
     {
         $tag =  $this->postCollectionFactory->getListPost()->getResource()->returnCategory($id);

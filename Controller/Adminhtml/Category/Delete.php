@@ -58,6 +58,9 @@ class Delete extends \Magento\Backend\App\Action
         }
     }
 
+    /**
+     * @return bool
+     */
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('NgocThanh_Blog::delete');

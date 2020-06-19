@@ -5,8 +5,15 @@ use Magento\Framework\App\Cache\Frontend\Pool;
 use Magento\Framework\App\Cache\TypeListInterface;
 use Magento\Framework\App\PageCache\Version;
 
+/**
+ * Class CleanCache
+ * @package NgocThanh\Blog\Helper\Cache
+ */
 class CleanCache
 {
+    /**
+     * @var TypeListInterface
+     */
     protected $cacheTypeList;
     protected $cacheFrontendPool;
 

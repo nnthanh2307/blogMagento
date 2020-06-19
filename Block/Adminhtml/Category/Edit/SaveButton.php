@@ -3,9 +3,15 @@ namespace NgocThanh\Blog\Block\Adminhtml\Category\Edit;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
+/**
+ * Class SaveButton
+ * @package NgocThanh\Blog\Block\Adminhtml\Category\Edit
+ */
 class SaveButton extends GenericButton implements ButtonProviderInterface
 {
-
+    /**
+     * @return array
+     */
     public function getButtonData()
     {
         return [
