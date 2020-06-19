@@ -38,6 +38,11 @@ class Edit extends \Magento\Backend\App\Action
         $resultPage = $this->_pageFactory->create();
         return $resultPage;
     }
+
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed('NgocThanh_Blog::edit');
+    }
 }
 
 ?>

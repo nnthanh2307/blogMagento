@@ -50,4 +50,9 @@ class MassDelete extends Action
         $this->messageManager->addSuccessMessage(__('A total of %1 record(s) have been deleted.', $collectionSize));
         return $this->_redirect($this->getUrl("*/*/"));
     }
+
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed('NgocThanh_Blog::delete');
+    }
 }
