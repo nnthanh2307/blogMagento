@@ -86,20 +86,20 @@
         <paging name="listing_paging">
             <settings>
                 <options>
-                    <option name="5" xsi:type="array">
-                        <item name="value" xsi:type="number">5</item>
-                        <item name="label" xsi:type="string">5</item>
+                    <option name="15" xsi:type="array">
+                        <item name="value" xsi:type="number">15</item>
+                        <item name="label" xsi:type="string">15</item>
                     </option>
                     <option name="10" xsi:type="array">
-                        <item name="value" xsi:type="number">10</item>
-                        <item name="label" xsi:type="string">10</item>
-                    </option>
-                    <option name="20" xsi:type="array">
                         <item name="value" xsi:type="number">20</item>
                         <item name="label" xsi:type="string">20</item>
                     </option>
+                    <option name="20" xsi:type="array">
+                        <item name="value" xsi:type="number">30</item>
+                        <item name="label" xsi:type="string">30</item>
+                    </option>
                 </options>
-                <pageSize>5</pageSize>
+                <pageSize>15</pageSize>
             </settings>
         </paging>
 

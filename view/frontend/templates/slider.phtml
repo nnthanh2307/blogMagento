@@ -1,34 +1,23 @@
 <?php
     if ($block->getRelatedProduct()->getSize() > 0) {
-        ?>
-        <div id="demo" class="carousel slide" data-ride="carousel">
-            <ul class="carousel-indicators">
-                <li data-target="#demo" data-slide-to="0" class="active"></li>
-                <li data-target="#demo" data-slide-to="1"></li>
-                <li data-target="#demo" data-slide-to="2"></li>
-            </ul>
-            <!-- The slideshow -->
-            <div class="carousel-inner">
-                <?php
-                    foreach ($block->getRelatedProduct() as $item) {
-                        ?>
-                    <div class="carousel-item active">
-                        <img src="<?php echo $item->getThumbnail() ?>" alt="Los Angeles">
-                    </div>
-                <?php
-                    } ?>
+        $count = 1;
+        foreach ($block->getRelatedProduct() as $item) {
+            ?>
+        <div class="col-sm-3">
+            <div class="card" style="width:100%">
+                <img class="card-img-top" src="<?php echo $item->getThumbnail() ?>" alt="Card image">
+                <div class="card-body">
+                    <h4 style="text-align: center" class="card-title"><?php echo $item->getName() ?></h4>
+                    <p style="color: red; text-align: center" class="card-text">Price: <?php echo $item->getPrice() ?></p>
+                </div>
             </div>
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
         </div>
-
-
         <?php
+            if ($count == 4) {
+                break;
+            }
+            $count++;
+        }
     }
 
 ?>

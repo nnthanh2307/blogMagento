@@ -37,7 +37,7 @@ class GetPost extends \Magento\Framework\View\Element\Template
         if (!empty($params["search"])) {
             $post->addFieldToFilter("post_title", ["like" => "%{$params["search"]}%"]);
         }
-        $post->setPageSize(4);
+        $post->setPageSize(5);
         $post->setCurPage(1);
         if (isset($params["num"])) {
             $post->setPageSize($params["num"]);

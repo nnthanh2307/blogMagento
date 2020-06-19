@@ -35,7 +35,8 @@ class Category extends Column
     public function prepareDataSource(array $dataSource)
     {
         foreach ($dataSource["data"]["items"] as &$item) {
-            $item["category"] = implode(",", $item["category_name"]);
+           if(!empty($item["category_name"]))
+               $item["category"] = implode(",", $item["category_name"]);
         }
         return $dataSource;
     }

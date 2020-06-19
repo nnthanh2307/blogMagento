@@ -1,22 +1,11 @@
-<!--================Home Banner Area =================-->
-
-<!--================End Home Banner Area =================-->
-
-<!--================Blog Categorie Area =================-->
-
-<!--================Blog Categorie Area =================-->
-
-<!--================Blog Area =================-->
-
-
 <section class="blog_area">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div class="blog_left_sidebar">
                     <?php
-                        if (count($block->getPost()) > 0) {
-                            foreach ($block->getPost() as $item) {
+                        if (count($block->getPost()->getData()) > 0) {
+                            foreach ($block->getPost()->getData() as $item) {
                            ?>
                             <article class="row blog_item">
                                 <div class="col-md-3">
@@ -31,7 +20,8 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="blog_post">
-                                        <a href="<?php echo $block->postURL($item["post_id"]) ?>"><img src="<?= $item["thumbnail"] ?>" alt=""></a>
+                                        <a href="<?php echo $block->postURL($item["post_id"]) ?>"><img src="<?php echo (!empty($item["thumbnail"]) ? $item["thumbnail"]
+                                            : "http://magento2local.com/media/ngocthanh/tmp/image/default.jpg") ?>" alt=""></a>
                                         <div class="blog_details">
                                             <a href="<?php echo $block->postURL($item["post_id"]) ?>"><h2><?php echo $item["post_title"]?></h2></a>
                                             <p><?= $item["short_description"] ?></p>
@@ -44,7 +34,10 @@
                             }
                         }
                     ?>
-                    <?php echo $block->getChildHtml("pagination")?>
+<!--                    <div>--><?php //echo $block->getPagerHtml(); ?><!--</div>-->
+                    <?php if ($block->getPagerHtml()): ?>
+                        <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+                    <?php endif ?>
                 </div>
             </div>
             <?php echo $block->getChildHtml("rightbar")?>

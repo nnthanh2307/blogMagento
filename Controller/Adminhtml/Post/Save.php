@@ -106,9 +106,10 @@ class Save extends \Magento\Backend\App\Action
         $result = [];
         $relatedProduct = [];
         $data = $this->getRequest()->getParams();
-        $category = $data["category_id"];
-        $result["tag"] = $data["tag_id"];
-
+        if (!empty($data["category_id"]))
+            $result["category"] = $data["category_id"];
+        if (!empty($data["tag_id"]))
+            $result["tag"] = $data["tag_id"];
         if (!empty($data["links"])) {
             $relatedProduct = $data["links"]["related_product"];
             $result["relatedProduct"]= $relatedProduct;
@@ -121,7 +122,6 @@ class Save extends \Magento\Backend\App\Action
             $data["tag"],
             $data["tag_id"]
         );
-        $result["category"] = $category;
         $result["post"] = $data;
         if (!isset($data["status"])) {
             $result["post"]["status"] = 0;

@@ -19,6 +19,10 @@
                     <label>Display name in frontend </label>
                     <comment>This text will display on the frontend.</comment>
                 </field>
+                <field id="number_per_page" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Number Per Page</label>
+                    <comment>Default number blog show in frontend</comment>
+                </field>
             </group>
             <group id="seo" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Search Engine Optimization</label>

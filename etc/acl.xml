@@ -5,7 +5,10 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Backend::content">
                     <resource id="NgocThanh_Blog::blog" title="Module Blog">
-                        <resource id="NgocThanh_Blog::post" title="List Posts" sortOrder="10"/>
+                        <resource id="NgocThanh_Blog::post" title="List Posts" sortOrder="10">
+                            <resource id="NgocThanh_Blog::edit" title="Blog Edit"/>
+                            <resource id="NgocThanh_Blog::delete" title="Blog Delete"/>
+                        </resource>
                         <resource id="NgocThanh_Blog::category" title="Categories" sortOrder="11"/>
                     </resource>
                 </resource>

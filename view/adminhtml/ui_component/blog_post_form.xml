@@ -103,9 +103,6 @@
                         <item name="disableLabel" xsi:type="boolean">true</item>
                         <item name="multiple" xsi:type="boolean">true</item>
                         <item name="levelsVisibility" xsi:type="number">2</item>
-                        <item name="validation" xsi:type="array">
-                            <item name="required-entry" xsi:type="boolean">true</item>
-                        </item>
                     </item>
                 </argument>
             </field>
@@ -124,9 +121,6 @@
                         <item name="disableLabel" xsi:type="boolean">true</item>
                         <item name="multiple" xsi:type="boolean">true</item>
                         <item name="levelsVisibility" xsi:type="number">2</item>
-                        <item name="validation" xsi:type="array">
-                            <item name="required-entry" xsi:type="boolean">true</item>
-                        </item>
                     </item>
                 </argument>
             </field>
@@ -137,9 +131,6 @@
                         <item name="options" xsi:type="array">
                             <item name="showsTime" xsi:type="boolean">true</item>
                         </item>
-<!--                        <item name="validation" xsi:type="array">-->
-<!--                            <item name="required-entry" xsi:type="boolean">true</item>-->
-<!--                        </item>-->
                         <item name="source" xsi:type="string">Publish_date_from</item>
                     </item>
                 </argument>
@@ -157,9 +148,6 @@
                         <item name="options" xsi:type="array">
                             <item name="showsTime" xsi:type="boolean">true</item>
                         </item>
-<!--                        <item name="validation" xsi:type="array">-->
-<!--                            <item name="required-entry" xsi:type="boolean">true</item>-->
-<!--                        </item>-->
                         <item name="source" xsi:type="string">publish_date_to</item>
                     </item>
                 </argument>
@@ -181,9 +169,6 @@
                         <item name="formElement" xsi:type="string">fileUploader</item>
                         <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
                         <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>
-<!--                        <item name="validation" xsi:type="array">-->
-<!--                            <item name="required-entry" xsi:type="boolean">true</item>-->
-<!--                        </item>-->
                         <item name="uploaderConfig" xsi:type="array">
                             <item name="url" xsi:type="url" path="blog/post/upload"/>
                         </item>
@@ -196,19 +181,20 @@
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
                         <item name="wysiwygConfigData" xsi:type="array">
-                            <item name="height" xsi:type="string">200px</item>
+                            <item name="height" xsi:type="string">300px</item>
                             <item name="add_variables" xsi:type="boolean">true</item>
                             <item name="add_widgets" xsi:type="boolean">true</item>
                             <item name="add_images" xsi:type="boolean">true</item>
                             <item name="add_directives" xsi:type="boolean">true</item>
                         </item>
                     </item>
-<!--                    <item name="validation" xsi:type="array">-->
-<!--                        <item name="required-entry" xsi:type="boolean">true</item>-->
-<!--                    </item>-->
                 </argument>
                 <settings>
-                    <label>Content</label>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <label translate="true">Content</label>
+                    <dataScope>content</dataScope>
                 </settings>
                 <formElements>
                     <wysiwyg>
@@ -247,9 +233,10 @@
                         <item name="label" xsi:type="string" translate="true">URL Key</item>
                         <item name="dataType" xsi:type="string">text</item>
                         <item name="formElement" xsi:type="string">input</item>
-<!--                        <item name="validation" xsi:type="array">-->
-<!--                            <item name="required-entry" xsi:type="boolean">true</item>-->
-<!--                        </item>-->
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                            <item name="validate-alphanum" xsi:type="boolean">true</item>
+                        </item>
                     </item>
                 </argument>
             </field>

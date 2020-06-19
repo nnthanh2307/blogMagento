@@ -20,7 +20,7 @@ class GetCategory extends \Magento\Framework\View\Element\Template
 
     public function listCategory()
     {
-        $list= $this->_category->getCategory()->getData();
+        $list= $this->_category->getCategory()->addFieldToFilter("status", ["eq" => '1'])->getData();
         $this->categoryTree($list);
         return $this->array;
     }

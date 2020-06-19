@@ -4,8 +4,8 @@
         <blog>
             <general>
                 <enable>0</enable>
-                <display_text>Default Configuration</display_text>
                 <name_in_frontend>Module Blog</name_in_frontend>
+                <number_per_page>5,10,15</number_per_page>
             </general>
         </blog>
         <blog>
